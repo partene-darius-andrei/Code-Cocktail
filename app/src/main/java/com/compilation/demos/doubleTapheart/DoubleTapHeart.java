@@ -1,4 +1,4 @@
-package com.compilation.demos;
+package com.compilation.demos.doubleTapheart;
 
 import android.content.Context;
 import android.os.Handler;
@@ -17,6 +17,8 @@ import android.widget.RelativeLayout;
 import com.compilation.R;
 
 public class DoubleTapHeart extends AppCompatActivity {
+
+    //TODO separate classes
 
     private GestureDetectorCompat mDetector;
     private Context context;

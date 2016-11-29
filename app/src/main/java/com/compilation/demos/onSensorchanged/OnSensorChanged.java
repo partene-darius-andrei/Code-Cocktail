@@ -1,4 +1,4 @@
-package com.compilation.demos;
+package com.compilation.demos.onSensorchanged;
 
 import android.app.Activity;
 import android.content.Context;
@@ -25,6 +25,10 @@ public class OnSensorChanged extends Activity {
     private int frequency = 50;
 
     private SensorEventListener sensorEventListener;
+
+    //TODO simplify ui
+
+    //TODO add explanations and problems
 
 
     @Override

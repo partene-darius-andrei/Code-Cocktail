@@ -9,7 +9,16 @@ import android.content.Context;
 
 public class MyApplication extends Application{
 
+    //TODO add description in each demo like
+
+    /**
+     *  this
+     */
+
+    //TODO add comments EVERYWHERE
+
     static Context context;
+
     @Override
     public void onCreate() {
         super.onCreate();

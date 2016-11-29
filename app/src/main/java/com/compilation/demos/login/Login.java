@@ -1,4 +1,4 @@
-package com.compilation.demos;
+package com.compilation.demos.login;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.Toast;
 import com.compilation.R;
 
 public class Login extends AppCompatActivity {
+
+    //TODO add more stuff to demo it
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

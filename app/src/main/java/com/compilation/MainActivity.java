@@ -1,6 +1,5 @@
 package com.compilation;
 
-import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -11,7 +10,6 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -26,6 +24,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    //TODO separate classes
+
     List<ActivityInfo> activityInfos;
 
     @Override
@@ -35,27 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         activityInfos = getActivities();
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        MainAdapter adapter = new MainAdapter();
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
-        recyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
-                        try {
-                            startActivity(new Intent(getApplicationContext(), Class.forName(activityInfos.get(position).name)));
-                        } catch (ClassNotFoundException e) {
-                            e.printStackTrace();
-                        }
-                    }
+        initRecyclerView();
 
-                    @Override public void onLongItemClick(View view, int position) {
-                        // do whatever
-                    }
-                })
-        );
     }
 
     private List<ActivityInfo> getActivities() {
@@ -71,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        assert info != null;
         List<ActivityInfo> activityInfos = new LinkedList<>(Arrays.asList(info.activities));
         for (ActivityInfo activityInfo: new ArrayList<>(activityInfos)){
             String name = activityInfo.name;
@@ -82,31 +64,42 @@ public class MainActivity extends AppCompatActivity {
         return activityInfos;
     }
 
+    public void initRecyclerView(){
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        MainAdapter adapter = new MainAdapter();
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        try {
+                            startActivity(new Intent(getApplicationContext(), Class.forName(activityInfos.get(position).name)));
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                })
+        );
+    }
+
     public static class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
         private OnItemClickListener mListener;
 
         interface OnItemClickListener {
             void onItemClick(View view, int position);
 
-            void onLongItemClick(View view, int position);
         }
 
         GestureDetector mGestureDetector;
 
-        RecyclerItemClickListener(Context context, final RecyclerView recyclerView, OnItemClickListener listener) {
+        RecyclerItemClickListener(Context context, OnItemClickListener listener) {
             mListener = listener;
             mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
                 @Override
                 public boolean onSingleTapUp(MotionEvent e) {
                     return true;
-                }
-
-                @Override
-                public void onLongPress(MotionEvent e) {
-                    View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
-                    if (child != null && mListener != null) {
-                        mListener.onLongItemClick(child, recyclerView.getChildAdapterPosition(child));
-                    }
                 }
             });
         }

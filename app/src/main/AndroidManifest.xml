@@ -18,31 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".demos.OnSensorChanged" />
-        <activity android:name=".demos.SharedPreferences" />
-        <activity android:name=".demos.AdapterSwitch" />
-        <activity android:name=".demos.Login" />
-        <activity android:name=".demos.CoverImages" />
-        <activity android:name=".demos.PopupSystem" />
-        <activity android:name=".demos.UpdateSeekbars" />
-        <activity android:name=".demos.Simulator" />
-        <activity android:name=".demos.MessagesFromRes" />
-        <activity android:name=".demos.Utils" />
-        <activity android:name=".demos.CrossReference" />
-        <activity android:name=".demos.DelayedNotification" />
-        <activity android:name=".demos.LoadAds" />
-        <activity android:name=".demos.DownloadImageTask" />
-        <activity android:name=".demos.UploadService" />
-        <activity android:name=".demos.GetData" />
-        <activity android:name=".demos.DualViewPager" />
-        <activity android:name=".demos.DoubleTapHeart" />
-        <activity android:name=".demos.ButtonsArrayList" />
-        <activity android:name=".demos.RandomHeartPosition" />
-        <activity android:name=".demos.UniversalAdapter" />
-        <activity android:name=".demos.MapsScreenshot" />
-        <activity android:name=".demos.SetCurrentLocation" />
-        <activity android:name=".demos.HorizontalListView" />
-        <activity android:name=".demos.MultipleSharedPreferences"></activity>
+        <activity android:name=".demos.onSensorchanged.OnSensorChanged" />
+        <activity android:name=".demos.login.Login" />
+        <activity android:name=".demos.crossReference.CrossReference" />
+        <activity android:name=".demos.downloadImageTask.DownloadImageTask" />
+        <activity android:name=".demos.doubleTapheart.DoubleTapHeart" />
     </application>
 
 </manifest>

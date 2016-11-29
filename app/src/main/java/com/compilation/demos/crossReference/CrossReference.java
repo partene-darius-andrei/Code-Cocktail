@@ -1,4 +1,4 @@
-package com.compilation.demos;
+package com.compilation.demos.crossReference;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -23,11 +23,14 @@ import java.util.List;
 
 public class CrossReference extends AppCompatActivity {
 
+    //TODO separate classes
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cross_reference);
 
+        //TODO radio buttons to change current appID and refresh layout (better demo)
         try {
             createCrossReference();
         } catch (JSONException e) {
