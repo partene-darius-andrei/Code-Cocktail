@@ -1,5 +1,6 @@
 package com.compilation;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -17,17 +19,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    List<ActivityInfo> activityInfos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ActivityInfo[] activityInfos = getActivityList();
+        activityInfos = getActivities();
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        MainAdapter adapter = new MainAdapter(activityInfos);
+        MainAdapter adapter = new MainAdapter();
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -36,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         try {
-                            startActivity(new Intent(getApplicationContext(), Class.forName(activityInfos[position].name)));
+                            startActivity(new Intent(getApplicationContext(), Class.forName(activityInfos.get(position).name)));
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }
@@ -49,7 +58,10 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
-    private ActivityInfo[] getActivityList() {
+    private List<ActivityInfo> getActivities() {
+
+        String a = this.getClass().toString();
+        String currentActivity = a.substring(a.indexOf(" ") + 1, a.length());
 
         PackageManager pm = this.getPackageManager();
         PackageInfo info = null;
@@ -58,7 +70,16 @@ public class MainActivity extends AppCompatActivity {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        return info.activities;
+
+        List<ActivityInfo> activityInfos = new LinkedList<>(Arrays.asList(info.activities));
+        for (ActivityInfo activityInfo: new ArrayList<>(activityInfos)){
+            String name = activityInfo.name;
+            if (name.equals(currentActivity)){
+                activityInfos.remove(activityInfo);
+                break;
+            }
+        }
+        return activityInfos;
     }
 
     public static class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
@@ -72,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         GestureDetector mGestureDetector;
 
-        public RecyclerItemClickListener(Context context, final RecyclerView recyclerView, OnItemClickListener listener) {
+        RecyclerItemClickListener(Context context, final RecyclerView recyclerView, OnItemClickListener listener) {
             mListener = listener;
             mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
                 @Override
@@ -107,8 +128,6 @@ public class MainActivity extends AppCompatActivity {
 
     class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> {
 
-        private ActivityInfo[] activityInfos;
-
         class MyViewHolder extends RecyclerView.ViewHolder {
             TextView title;
 
@@ -119,9 +138,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
-        public MainAdapter(ActivityInfo[] activityInfos) {
-            this.activityInfos = activityInfos;
+        MainAdapter() {
         }
 
         @Override
@@ -135,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
 
-            String appInfo = activityInfos[position].toString();
+            String appInfo = activityInfos.get(position).toString();
             String className = appInfo.substring(appInfo.lastIndexOf(".") + 1, appInfo.length() - 1);
 
             holder.title.setText(className);
@@ -143,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return activityInfos.length;
+            return activityInfos.size();
         }
 
 
