@@ -1,0 +1,8 @@
+{
+  "data":[
+    {"appID": "com.app1"},
+    {"appID": "com.app2"},
+    {"appID": "com.app3"},
+    {"appID": "com.app4"}
+  ]
+}
