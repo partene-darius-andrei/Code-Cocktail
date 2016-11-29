@@ -98,7 +98,7 @@ public class CrossReference extends AppCompatActivity {
                     startActivity(launchIntent);
                 } else {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("market://details?id=" + packageName));
+                    intent.setData(Uri.parse("market://details?name=" + packageName));
                     startActivity(intent);
                 }
             }
