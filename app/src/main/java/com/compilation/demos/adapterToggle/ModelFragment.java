@@ -24,7 +24,7 @@ public class ModelFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        RelativeLayout llLayout = (RelativeLayout) inflater.inflate(R.layout.questions_fragment_layout, container, false);
+        RelativeLayout llLayout = (RelativeLayout) inflater.inflate(R.layout.model_fragment_layout, container, false);
         RecyclerView recyclerView = (RecyclerView) llLayout.findViewById(R.id.recycler_view);
         ArrayList<Model> models = getArguments().getParcelableArrayList("models");
         ModelsAdapter adapter  = new ModelsAdapter(models);

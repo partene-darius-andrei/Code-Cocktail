@@ -19,6 +19,8 @@ public class MyApplication extends Application{
 
     //TODO add comments EVERYWHERE
 
+            //TODO cleaning
+
     static Context context;
 
     @Override
