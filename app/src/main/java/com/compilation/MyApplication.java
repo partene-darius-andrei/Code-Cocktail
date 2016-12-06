@@ -9,6 +9,8 @@ import android.content.Context;
 
 public class MyApplication extends Application{
 
+    static DummyData dummyData;
+
     //TODO add description in each demo like
 
     /**
@@ -23,6 +25,8 @@ public class MyApplication extends Application{
     public void onCreate() {
         super.onCreate();
         context = this;
+        dummyData = new DummyData();
+
 
     }
 
@@ -32,5 +36,9 @@ public class MyApplication extends Application{
             throw new RuntimeException("The application must have extend MyApplication. To do this add android:name=\".MyApplication\" to your <Application /> tag in AndroidManifest.xml");
 
         return context;
+    }
+
+    public static DummyData getDummyData() {
+        return dummyData;
     }
 }

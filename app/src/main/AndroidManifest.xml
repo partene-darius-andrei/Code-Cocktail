@@ -23,6 +23,7 @@
         <activity android:name=".demos.crossReference.CrossReference" />
         <activity android:name=".demos.downloadImageTask.DownloadImageTask" />
         <activity android:name=".demos.doubleTapheart.DoubleTapHeart" />
+        <activity android:name=".demos.adapterToggle.AdapterToggle"></activity>
     </application>
 
 </manifest>
