@@ -10,6 +10,8 @@ import com.compilation.R;
 
 public class AdapterToggle extends AppCompatActivity {
 
+    //TODO add comments
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

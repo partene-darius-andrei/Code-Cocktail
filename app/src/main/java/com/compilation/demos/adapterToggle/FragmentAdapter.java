@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 class FragmentAdapter extends FragmentStatePagerAdapter {
 
+    //TODO add comments
+
     private ArrayList<Model> filtered = new ArrayList<>();
     private ArrayList<Model> unfiltered = new ArrayList<>();
 

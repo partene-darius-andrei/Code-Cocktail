@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 public class Model implements Parcelable{
 
+    //TODO maybe make it global, available for all demos
+
     private String title;
     private boolean filtered;
 
