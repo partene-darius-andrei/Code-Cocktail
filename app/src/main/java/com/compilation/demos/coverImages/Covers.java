@@ -9,6 +9,8 @@ import java.util.List;
 
 class Covers {
 
+    //TODO replace with funnier images
+
     static List<Uri> getImages(int size){
         List<Uri> list = new ArrayList<>();
         list.add((ImageRequestBuilder.newBuilderWithResourceId(R.drawable.cover_1).build()).getSourceUri());

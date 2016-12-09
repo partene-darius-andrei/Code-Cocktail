@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Compilation</string>
+    <array name="notifications">
+        <item>Notification 1</item>
+        <item>Notification 2</item>
+        <item>Notification 3</item>
+        <item>Notification 4</item>
+        <item>Notification 5</item>
+        <item>Notification 6</item>
+    </array>
 </resources>
