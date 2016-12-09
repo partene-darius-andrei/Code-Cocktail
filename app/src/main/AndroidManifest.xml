@@ -25,13 +25,15 @@
         <activity android:name=".demos.doubleTapheart.DoubleTapHeart" />
         <activity android:name=".demos.adapterToggle.AdapterToggle" />
         <activity android:name=".demos.coverImages.CoverImages" />
-        <activity android:name=".demos.notification.NotificationSystem"/>
+        <activity android:name=".demos.notification.NotificationSystem" />
 
-        <service android:name=".demos.notification.Notification$MyAlarmService"
+        <service
+            android:name=".demos.notification.Notification$MyAlarmService"
             android:enabled="true" />
 
-        <receiver android:name=".demos.notification.Notification$MyReceiver"/>
+        <receiver android:name=".demos.notification.Notification$MyReceiver" />
 
+        <activity android:name=".demos.horizontalViews.HorizontalViews"></activity>
     </application>
 
 </manifest>

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.compilation.Model;
 import com.compilation.R;
 
 import java.util.List;

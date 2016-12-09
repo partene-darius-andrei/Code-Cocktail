@@ -1,4 +1,4 @@
-package com.compilation.demos.adapterToggle;
+package com.compilation;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -52,7 +52,7 @@ public class Model implements Parcelable{
         this.title = title;
     }
 
-    boolean isFiltered() {
+    public boolean isFiltered() {
         return filtered;
     }
 

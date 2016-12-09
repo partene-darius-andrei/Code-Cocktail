@@ -1,7 +1,5 @@
 package com.compilation;
 
-import com.compilation.demos.adapterToggle.Model;
-
 import java.util.ArrayList;
 
 /**
@@ -13,12 +11,14 @@ public class DummyData {
 
     private static ArrayList<Model> list = new ArrayList<>();
 
-    DummyData() {
+    public DummyData() {
 
-        list.add(new Model("Filtered 1", true));
-        list.add(new Model("Filtered 2", true));
-        list.add(new Model("Unfiltered 3", false));
-        list.add(new Model("Unfiltered 4", false));
+        list.add(new Model("Model 1", true));
+        list.add(new Model("Model 2", true));
+        list.add(new Model("Model 3", true));
+        list.add(new Model("Model 4", false));
+        list.add(new Model("Model 5", false));
+        list.add(new Model("Model 6", false));
 
     }
 
