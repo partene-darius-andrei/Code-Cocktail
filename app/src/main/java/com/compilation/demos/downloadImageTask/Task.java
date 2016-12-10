@@ -6,30 +6,30 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
-
-import com.compilation.mainApp.MyApplication;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
-/**
- * Created by Darius on 11/30/2016.
- */
 
 class Task extends AsyncTask<String, Void, Bitmap> {
 
-    private Context context = MyApplication.getContext();
+    /**
+     * Custom Async Task which downloads and saves image in cache
+     */
+
+    private Context context;
     private Bitmap bitmap;
     private ImageView imageView;
 
-    Task(ImageView imageView) {
+    Task(ImageView imageView, Context context) {
         this.imageView = imageView;
+        this.context = context;
     }
 
     protected Bitmap doInBackground(String... urls) {
         String url = urls[0];
         bitmap = getImageByUrl(url);
+        //if there isn't an image in cache, download it
         if (bitmap == null) {
             try {
                 InputStream in = new java.net.URL(url).openStream();
@@ -38,11 +38,13 @@ class Task extends AsyncTask<String, Void, Bitmap> {
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
             }
+            //and save it at the end with the name of the url
             saveImage(url);
         }
         return bitmap;
     }
 
+    //at the end, set the image to the imageView
     protected void onPostExecute(Bitmap result) {
         imageView.setImageBitmap(result);
     }
@@ -58,6 +60,7 @@ class Task extends AsyncTask<String, Void, Bitmap> {
         }
     }
 
+    //load the image from cache if it exists
     private Bitmap getImageByUrl(String url) {
 
         try {
