@@ -3,6 +3,7 @@ package com.compilation.demos.adapterSort;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.compilation.mainApp.HolderActivity;
 import com.compilation.mainApp.MyApplication;
@@ -20,6 +21,10 @@ public class Activity extends HolderActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adapter_sort);
+
+        TextView description = (TextView) findViewById(R.id.description);
+        description.setText("You can pass a list of objects and the adapter sorts those objects to each tab depending on a property (in this case \"filtered\")\n" +
+                "We can reuse the same fragment because we're just changing the data");
         initTabLayout();
     }
 

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
+
 import com.compilation.mainApp.HolderActivity;
 import com.compilation.R;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -25,6 +27,11 @@ public class Activity extends HolderActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cover_images);
         Fresco.initialize(this);
+        TextView description = (TextView) findViewById(R.id.description);
+        description.setText("This demo loads a set of images from the res folder and repeats them depending on the size of our list\n" +
+                "It doesn't matter how many covers or objects we have\n" +
+                "\n" +
+                "The Fresco library is used for better performance while scrolling");
         initRecyclerView();
 
     }

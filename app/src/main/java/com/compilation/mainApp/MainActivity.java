@@ -1,8 +1,6 @@
 package com.compilation.mainApp;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -23,16 +21,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.compilation.R;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -49,11 +43,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         demos = getDemos();
-
         initViews();
-        initRecyclerView();
 
     }
 
@@ -61,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     public void initViews() {
         initToolBar();
         initDrawer();
+        initRecyclerView();
     }
 
     public void initToolBar() {
@@ -86,10 +78,12 @@ public class MainActivity extends AppCompatActivity {
         names.add("Feedback");
         names.add("Rate");
         names.add("Share");
+        names.add("Github");
 
         icons.add(Icons.sendFeedback);
         icons.add(Icons.rate);
         icons.add(Icons.share);
+        icons.add(Icons.gitHub);
 
 
         ListView mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -131,6 +125,9 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra(Intent.EXTRA_TEXT, "play.google.com/store/apps/details?id=" + getApplicationContext().getApplicationInfo().packageName);
                         startActivity(Intent.createChooser(intent, "Share via"));
                         break;
+                    case 3:
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/partene-darius-andrei/Compilation"));
+                        startActivity(browserIntent);
                 }
             }
         });
@@ -228,16 +225,13 @@ public class MainActivity extends AppCompatActivity {
     class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> {
 
         class MyViewHolder extends RecyclerView.ViewHolder {
-            TextView title;
+            TextView title, description;
 
             MyViewHolder(View view) {
                 super(view);
-//            description = (TextView) view.findViewById(R.id.description);
+            description = (TextView) view.findViewById(R.id.description);
                 title = (TextView) view.findViewById(R.id.title);
             }
-        }
-
-        MainAdapter() {
         }
 
         @Override
@@ -252,6 +246,7 @@ public class MainActivity extends AppCompatActivity {
         public void onBindViewHolder(MyViewHolder holder, int position) {
 
             holder.title.setText(demos.get(position).getTitle());
+            holder.description.setText(demos.get(position).getDescription());
         }
 
         @Override
@@ -283,6 +278,7 @@ public class MainActivity extends AppCompatActivity {
         static String sendFeedback = "\uf0e0";
         static String rate = "\ue800";
         static String share = "\ue801";
+        static String gitHub = "\uf09b";
 
     }
 }

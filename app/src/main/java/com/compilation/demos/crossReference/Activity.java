@@ -3,7 +3,10 @@ package com.compilation.demos.crossReference;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.compilation.R;
 import com.compilation.mainApp.HolderActivity;
@@ -24,11 +27,19 @@ public class Activity extends HolderActivity {
     Utils utils = new Utils(this);
 
     JSONArray appIDs;
+    ProgressBar progressBar;
+    LinearLayout container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cross_reference);
+
+        TextView ignored = (TextView) findViewById(R.id.textView);
+        ignored.setText("Select an app");
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        container = (LinearLayout) findViewById(R.id.iconsContainer);
 
         //read the json
         try {
@@ -48,6 +59,8 @@ public class Activity extends HolderActivity {
     public void onRadioButtonClicked(View view) {
 
         boolean checked = ((RadioButton) view).isChecked();
+        progressBar.setVisibility(View.GONE);
+        container.setVisibility(View.VISIBLE);
 
         // Check which radio button was clicked
         if (checked)
@@ -93,7 +106,8 @@ public class Activity extends HolderActivity {
                 }
                 else {
                     TextView ignored = (TextView) findViewById(R.id.textView);
-                    ignored.setText("App ignored: " + appID);
+                    ignored.setText("This demos illustrates how we can have multiple apps (in this case 4) and create references to each other\n" +
+                            "We load the config from a json which contains a packagename (the icon has the same name for simplicity");
                 }
             }
 

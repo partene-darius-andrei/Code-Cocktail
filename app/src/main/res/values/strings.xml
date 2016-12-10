@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Compilation</string>
+    <string name="app_name">Code Cocktail</string>
     <array name="notifications">
         <item>Notification 1</item>
         <item>Notification 2</item>

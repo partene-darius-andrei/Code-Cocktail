@@ -65,7 +65,7 @@
         android:visibility="gone"
         android:elevation="6dp"
         android:indeterminateTintMode="src_atop"
-        android:indeterminateTint="@color/colorPrimaryDark"
+        android:indeterminateTint="@color/white"
         android:layout_alignBottom="@+id/floatingActionButton"
         android:layout_alignEnd="@+id/floatingActionButton"
         android:layout_alignTop="@+id/floatingActionButton"

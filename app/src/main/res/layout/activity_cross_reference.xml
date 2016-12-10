@@ -10,9 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/toolbar"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentTop="true"/>
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -21,42 +19,49 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_margin="50dp">
+
         <RadioButton android:id="@+id/app1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="App1"
-            android:onClick="onRadioButtonClicked"/>
+            android:text="App 1"
+            android:onClick="onRadioButtonClicked"
+            android:textSize="24sp" />
         <RadioButton android:id="@+id/app2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="App2"
-            android:onClick="onRadioButtonClicked"/>
+            android:text="App 2"
+            android:onClick="onRadioButtonClicked"
+            android:textSize="24sp" />
         <RadioButton android:id="@+id/app3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="App3"
-            android:onClick="onRadioButtonClicked"/>
+            android:text="App 3"
+            android:onClick="onRadioButtonClicked"
+            android:textSize="24sp" />
         <RadioButton android:id="@+id/app4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="App4"
-            android:onClick="onRadioButtonClicked"/>
+            android:text="App 4"
+            android:onClick="onRadioButtonClicked"
+            android:textSize="24sp" />
     </RadioGroup>
 
     <TextView
         android:text="Select an app"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
         android:textSize="18sp"
         android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true"
-        android:layout_margin="40dp" />
+        android:layout_margin="16dp"
+        android:textAlignment="center" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:weightSum="3"
+        android:visibility="gone"
         android:background="@drawable/card"
         android:id="@+id/iconsContainer"
         android:layout_centerVertical="true"
@@ -86,5 +91,15 @@
             android:layout_margin="5dp" />
 
     </LinearLayout>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:id="@+id/progressBar"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/iconsContainer" />
 
 </RelativeLayout>

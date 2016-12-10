@@ -9,16 +9,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/title"
         android:textSize="24sp"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/blue"
         android:text="Title"
         android:layout_margin="10dp"
         android:textStyle="normal|bold" />
 
-    <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/description"-->
-        <!--android:text="description"-->
-        <!--android:layout_margin="5dp" />-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/description"
+        android:text="description"
+        android:layout_margin="5dp" />
 
 </LinearLayout>

@@ -7,15 +7,14 @@ import java.util.ArrayList;
  */
 public class DummyData {
 
-    //TODO add comments for each object (which demo)
 
     private static ArrayList<Model> list = new ArrayList<>();
 
-    public DummyData() {
+    DummyData() {
 
         list.add(new Model("Model 1", true));
         list.add(new Model("Model 2", true));
-        list.add(new Model("Model 3", true));
+        list.add(new Model("Model 3", false));
         list.add(new Model("Model 4", false));
         list.add(new Model("Model 5", false));
         list.add(new Model("Model 6", false));

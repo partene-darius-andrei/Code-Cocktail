@@ -38,13 +38,27 @@
 
         </RelativeLayout>
         The navigation drawer
-        <ListView android:id="@+id/left_drawer"
+        <RelativeLayout
             android:layout_width="240dp"
             android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:choiceMode="singleChoice"
-            android:divider="@color/colorPrimary"
-            android:dividerHeight="0dp"
-            android:background="@color/colorPrimary"/>
+            android:layout_gravity="start">
+
+            <ListView android:id="@+id/left_drawer"
+                android:layout_width="240dp"
+                android:layout_height="match_parent"
+                android:choiceMode="singleChoice"
+                android:divider="@color/transparent"
+                android:dividerHeight="0dp"
+                android:background="@color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Copyright 2016,\nPartene Darius-Andrei,\nAll rights reserved."
+                android:layout_alignParentBottom="true"
+                android:padding="16dp" />
+
+        </RelativeLayout>
+
     </android.support.v4.widget.DrawerLayout>
 </RelativeLayout>

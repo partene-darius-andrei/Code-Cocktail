@@ -23,28 +23,6 @@
         android:textSize="18sp"
         android:layout_margin="16dp" />
 
-    <Button
-        android:text="Stop Notifying"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/stop"
-        android:background="@drawable/card"
-        android:onClick="stopNotifying"
-        android:layout_below="@+id/start"
-        android:layout_centerHorizontal="true"
-        android:padding="20dp" />
-
-    <Button
-        android:text="Start Notifying"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/start"
-        android:background="@drawable/card"
-        android:onClick="startNotifying"
-        android:padding="20dp"
-        android:layout_below="@+id/textView6"
-        android:layout_centerHorizontal="true" />
-
     <TextView
         android:text="The source of the messages can be easily replaced with a call to a server"
         android:layout_width="wrap_content"
@@ -54,4 +32,28 @@
         android:textSize="18sp"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp" />
+
+    <Button
+        android:text="Start Notifying"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:id="@+id/start"
+        android:background="@drawable/card_blue"
+        android:onClick="startNotifying"
+        android:padding="20dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Stop Notifying"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/stop"
+        android:background="@drawable/card_blue"
+        android:onClick="stopNotifying"
+        android:textColor="@color/white"
+        android:padding="20dp"
+        android:layout_below="@+id/start"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
