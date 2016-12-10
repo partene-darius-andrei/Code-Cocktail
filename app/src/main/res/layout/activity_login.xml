@@ -5,7 +5,13 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".demos.login.Login">
+    tools:context=".demos.login.Activity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"
+        android:layout_alignParentTop="true"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -28,15 +34,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:srcCompat="@android:drawable/ic_menu_send"
-        android:id="@+id/floatingActionButton"
-        android:layout_below="@+id/password_edit_text"
-        android:layout_centerHorizontal="true" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,4 +45,14 @@
         android:layout_below="@+id/user_edit_text"
         android:layout_alignLeft="@+id/user_edit_text"
         android:layout_alignStart="@+id/user_edit_text" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_send"
+        android:id="@+id/floatingActionButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp" />
 </RelativeLayout>

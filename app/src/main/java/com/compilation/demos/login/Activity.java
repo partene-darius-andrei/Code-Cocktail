@@ -1,22 +1,24 @@
 package com.compilation.demos.login;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.compilation.R;
+import com.compilation.mainApp.HolderActivity;
 
-public class Login extends AppCompatActivity {
+public class Activity extends HolderActivity {
 
-    //TODO add more stuff to demo it
+    /**
+     * Just a simple login screen using material design
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //editTexts to get input
         final EditText userName = (EditText) findViewById(R.id.user_edit_text);
         final EditText password = (EditText) findViewById(R.id.password_edit_text);
 

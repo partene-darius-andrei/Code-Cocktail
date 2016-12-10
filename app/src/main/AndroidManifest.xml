@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".demos.onSensorchanged.OnSensorChanged" />
-        <activity android:name=".demos.login.Login" />
+        <activity android:name=".demos.login.Activity" />
         <activity android:name=".demos.crossReference.Activity" />
         <activity android:name=".demos.downloadImageTask.Activity" />
         <activity android:name=".demos.doubleTapAnimation.Activity" />

@@ -17,6 +17,9 @@
       "description": "Load an image using asynchronously and save it"},
     {"class": "horizontalViews",
       "title": "Horizontal listView",
-      "description": "Adding views to create the illusion of horizontal listView"}
+      "description": "Adding views to create the illusion of horizontal listView"},
+    {"class": "login",
+      "title": "Login",
+      "description": "Just a simple login page using material design"}
   ]
 }
