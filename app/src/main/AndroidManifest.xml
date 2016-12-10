@@ -25,7 +25,7 @@
         <activity android:name=".demos.doubleTapAnimation.Activity" />
         <activity android:name=".demos.adapterSort.Activity" />
         <activity android:name=".demos.coverImages.Activity" />
-        <activity android:name=".demos.notification.NotificationSystem" />
+        <activity android:name=".demos.notification.Activity" />
 
         <service
             android:name=".demos.notification.Notification$MyAlarmService"

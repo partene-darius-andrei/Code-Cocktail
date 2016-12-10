@@ -4,12 +4,13 @@ import android.content.Context;
 import com.compilation.mainApp.MyApplication;
 
 class SharedPreferences {
+
+    /**
+     * Save to sharedPreferences the current notification count
+     */
     private android.content.SharedPreferences pref;
     private android.content.SharedPreferences.Editor editor;
-
     public static Context context = MyApplication.getContext();
-
-    // Shared preferences file name
     private static final String PREF_NAME = "notificationSystem";
     private static final String NOTIFICATION_COUNT = "notification_count";
 

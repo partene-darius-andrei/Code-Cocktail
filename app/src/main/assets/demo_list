@@ -20,6 +20,9 @@
       "description": "Adding views to create the illusion of horizontal listView"},
     {"class": "login",
       "title": "Login",
-      "description": "Just a simple login page using material design"}
+      "description": "Just a simple login page using material design"},
+    {"class": "notification",
+      "title": "Scheduled notification",
+      "description": "Demonstration of a repeating scheduled notification with a message from resources"}
   ]
 }
