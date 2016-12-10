@@ -4,7 +4,10 @@
       "title": "Cover images",
       "description": "Load a set of images from the res folder and repeats them depending on the size of our list"},
     {"class": "adapterSort",
-      "title": "Adapter Sort",
-      "description": "Adapter which can sort objects based on a property"}
+      "title": "Adapter sort",
+      "description": "Adapter which can sort objects based on a property"},
+    {"class": "crossReference",
+      "title": "App cross reference",
+      "description": "A set of 4 apps which creates links to each other based on a json config"}
   ]
 }
