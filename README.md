@@ -1,4 +1,4 @@
-# Compilation
+# Code Cocktail
 This app representes some of my own implementations with various elements: sensors, functions, APIs, etc over the course of an year.
 
 The MainActivity contains a recyclerView with all the demo activities.
