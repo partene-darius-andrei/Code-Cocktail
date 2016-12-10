@@ -8,6 +8,9 @@
       "description": "Adapter which can sort objects based on a property"},
     {"class": "crossReference",
       "title": "App cross reference",
-      "description": "A set of 4 apps which creates links to each other based on a json config"}
+      "description": "A set of 4 apps which creates links to each other based on a json config"},
+    {"class": "doubleTapAnimation",
+      "title": "Animation on doubleTap",
+      "description": "Load an image and apply an animation to it from the location of the doubleTap"}
   ]
 }

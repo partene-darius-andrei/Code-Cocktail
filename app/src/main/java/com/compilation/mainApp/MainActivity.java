@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.compilation.R;
 
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                             demo.putExtra("demo", demos.get(position));
                             startActivity(demo);
                         } catch (ClassNotFoundException e) {
-                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), "Class not found", Toast.LENGTH_SHORT).show();
                         }
                     }
                 })
