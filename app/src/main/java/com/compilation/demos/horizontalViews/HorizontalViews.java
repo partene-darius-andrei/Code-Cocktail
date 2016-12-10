@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.compilation.MyApplication;
+import com.compilation.mainApp.MyApplication;
 import com.compilation.R;
-import com.compilation.Model;
+import com.compilation.mainApp.Model;
 
 import java.util.List;
 

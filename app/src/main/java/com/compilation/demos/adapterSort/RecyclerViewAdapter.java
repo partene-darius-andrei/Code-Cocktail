@@ -1,4 +1,4 @@
-package com.compilation.demos.adapterToggle;
+package com.compilation.demos.adapterSort;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,12 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.compilation.Model;
+import com.compilation.mainApp.Model;
 import com.compilation.R;
 
 import java.util.List;
 
-class ModelsAdapter extends RecyclerView.Adapter<ModelsAdapter.MyViewHolder> {
+class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
     private List<Model> models;
 
@@ -25,7 +25,7 @@ class ModelsAdapter extends RecyclerView.Adapter<ModelsAdapter.MyViewHolder> {
     }
 
 
-    ModelsAdapter(List<Model> models) {
+    RecyclerViewAdapter(List<Model> models) {
         this.models = models;
     }
 

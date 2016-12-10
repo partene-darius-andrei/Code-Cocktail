@@ -1,4 +1,4 @@
-package com.compilation;
+package com.compilation.mainApp;
 
 import android.app.Application;
 import android.content.Context;

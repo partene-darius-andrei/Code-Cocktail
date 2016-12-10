@@ -7,7 +7,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.compilation.MyApplication;
+import com.compilation.mainApp.MyApplication;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

@@ -1,7 +1,7 @@
 package com.compilation.demos.notification;
 
 import android.content.Context;
-import com.compilation.MyApplication;
+import com.compilation.mainApp.MyApplication;
 
 class SharedPreferences {
     private android.content.SharedPreferences pref;

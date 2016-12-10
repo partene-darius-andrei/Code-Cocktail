@@ -50,7 +50,7 @@ public class DoubleTapHeart extends AppCompatActivity {
 
             container.setOnTouchListener(null);
 
-            //init heart and animation
+            //setContentView heart and animation
             Animation anim = AnimationUtils.loadAnimation(context, R.anim.move);
             final ImageView heart = new ImageView(context);
             heart.setImageResource(R.drawable.heart);

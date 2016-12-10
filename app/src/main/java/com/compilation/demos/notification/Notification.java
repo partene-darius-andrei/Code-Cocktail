@@ -11,7 +11,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 
-import com.compilation.MainActivity;
+import com.compilation.mainApp.MainActivity;
 import com.compilation.R;
 
 import java.util.Calendar;

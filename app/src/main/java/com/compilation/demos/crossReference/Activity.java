@@ -41,7 +41,7 @@ public class Activity extends AppCompatActivity {
     public String loadJSONFromAsset() {
         String json;
         try {
-            InputStream is = getAssets().open("deeplink");
+            InputStream is = getAssets().open("deeplink.json");
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);

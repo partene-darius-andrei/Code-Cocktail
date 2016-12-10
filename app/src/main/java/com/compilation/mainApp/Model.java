@@ -1,4 +1,4 @@
-package com.compilation;
+package com.compilation.mainApp;
 
 import android.os.Parcel;
 import android.os.Parcelable;

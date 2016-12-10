@@ -1,8 +1,10 @@
 {
   "demos":[
-    {"class": "crossReference", "title": "title1", "description": "description1"},
-    {"class": "adapterToggle", "title": "title2", "description": "description2"},
-    {"class": "coverImages", "title": "title3", "description": "description3"},
-    {"class": "crossReference", "title": "title4", "description": "description4"}
+    {"class": "coverImages",
+      "title": "Cover images",
+      "description": "Load a set of images from the res folder and repeats them depending on the size of our list"},
+    {"class": "adapterSort",
+      "title": "Adapter Sort",
+      "description": "Adapter which can sort objects based on a property"}
   ]
 }

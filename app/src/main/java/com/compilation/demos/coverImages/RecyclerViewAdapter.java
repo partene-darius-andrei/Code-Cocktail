@@ -10,7 +10,11 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
-class CoverAdapter extends RecyclerView.Adapter<CoverAdapter.MyViewHolder> {
+class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+
+    /**
+     * We load the URIs of the images in the constructor using getImages(size)
+     */
 
     private List<Uri> coverImages;
 
@@ -18,6 +22,7 @@ class CoverAdapter extends RecyclerView.Adapter<CoverAdapter.MyViewHolder> {
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
+        //fresco's custom view for images
         SimpleDraweeView cover;
 
         MyViewHolder(View view) {
@@ -27,7 +32,7 @@ class CoverAdapter extends RecyclerView.Adapter<CoverAdapter.MyViewHolder> {
     }
 
 
-    CoverAdapter(int size) {
+    RecyclerViewAdapter(int size) {
         this.size = size;
         coverImages = Covers.getImages(size);
     }
@@ -42,6 +47,9 @@ class CoverAdapter extends RecyclerView.Adapter<CoverAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+
+        //loading the cover based on position
+
         holder.cover.setImageURI(coverImages.get(position));
     }
 

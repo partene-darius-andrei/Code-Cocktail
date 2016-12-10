@@ -7,9 +7,12 @@ import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Covers {
+class Covers {
 
-    //TODO replace with funnier images
+    /**
+     * This class returns a list of URIs used for the adapter
+     * We use URIs because that's how Fresco loads it's custom views
+     */
 
     static List<Uri> getImages(int size){
         List<Uri> list = new ArrayList<>();
@@ -17,13 +20,22 @@ public class Covers {
         list.add((ImageRequestBuilder.newBuilderWithResourceId(R.drawable.cover_2).build()).getSourceUri());
         list.add((ImageRequestBuilder.newBuilderWithResourceId(R.drawable.cover_3).build()).getSourceUri());
 
-        List<Uri> aux = new ArrayList<>();
+        List<Uri> uris = new ArrayList<>();
+
+        //the first for iterates through the list of objects to be populated with covers
+
         for (int i = 0; i < size; i = i + list.size()){
+
+            //the second for iterates through the list of images
+
             for (int j = 0; j < list.size(); j++){
-                if (j <size )
-                    aux.add(list.get(j));
+
+                //condition used to stop from getting a cover image from a index higher than the covers actual size
+
+                if (j < size )
+                    uris.add(list.get(j));
             }
         }
-        return aux;
+        return uris;
     }
 }

@@ -1,4 +1,4 @@
-package com.compilation;
+package com.compilation.mainApp;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.compilation.R;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,7 +27,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    //TODO separate demos
+    //TODO separate classes
 
     List<Model> demos;
 
@@ -67,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
                 new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         try {
-                            startActivity(new Intent(getApplicationContext(), Class.forName(demos.get(position).getClassName())));
+                            Intent demo = new Intent(getApplicationContext(), Class.forName(demos.get(position).getClassName()));
+                            demo.putExtra("demo", demos.get(position));
+                            startActivity(demo);
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }

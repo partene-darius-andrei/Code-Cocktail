@@ -1,22 +1,25 @@
-package com.compilation.demos.adapterToggle;
+package com.compilation.demos.adapterSort;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-
-import com.compilation.Model;
-
+import com.compilation.mainApp.Model;
 import java.util.ArrayList;
 
-class FragmentAdapter extends FragmentStatePagerAdapter {
+class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    //TODO add comments
+    /**
+     * This is where we sort or objects and pass them as arguments for each fragment
+     */
 
     private ArrayList<Model> filtered = new ArrayList<>();
     private ArrayList<Model> unfiltered = new ArrayList<>();
 
-    FragmentAdapter(FragmentManager fm, ArrayList<Model> models) {
+    ViewPagerAdapter(FragmentManager fm, ArrayList<Model> models) {
+
+        //in the constructor we separate our objects depending on the "isFiltered" boolean
+
         super(fm);
         for (Model model : models) {
             if (model.isFiltered()) {
@@ -31,7 +34,9 @@ class FragmentAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        Fragment fragment = new ModelFragment();
+        //depending on the tab we have, we set the arguments respectively and return the fragment with the sorted data
+
+        Fragment fragment = new MyFragment();
         Bundle args = new Bundle();
 
         switch (position) {
@@ -55,11 +60,6 @@ class FragmentAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return 2;
-    }
-
-    @Override
-    public int getItemPosition(Object object) {
-        return POSITION_NONE;
     }
 
 }
