@@ -28,6 +28,15 @@
             android:layout_centerHorizontal="true"
             android:id="@+id/textView2"
             android:textSize="24sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ad_container"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            >
+        </RelativeLayout>
     </RelativeLayout>
 
 </RelativeLayout>

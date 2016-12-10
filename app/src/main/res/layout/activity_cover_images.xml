@@ -26,9 +26,18 @@
         android:layout_height="wrap_content"
         android:textColor="@color/blue"
         android:id="@+id/description"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/ad_container"
         android:textSize="18sp"
         android:textAlignment="center"
         android:padding="16dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ad_container"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        >
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/ad_container"
         android:layout_centerHorizontal="true"
         android:layout_margin="50dp">
 
@@ -101,5 +101,14 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/iconsContainer" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ad_container"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        >
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -52,7 +52,7 @@
         android:clickable="true"
         app:srcCompat="@android:drawable/ic_menu_send"
         android:id="@+id/floatingActionButton"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/ad_container"
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp" />
 
@@ -70,4 +70,13 @@
         android:layout_alignEnd="@+id/floatingActionButton"
         android:layout_alignTop="@+id/floatingActionButton"
         android:layout_alignStart="@+id/floatingActionButton" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ad_container"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        >
+    </RelativeLayout>
 </RelativeLayout>
