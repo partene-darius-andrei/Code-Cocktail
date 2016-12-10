@@ -20,11 +20,11 @@
         </activity>
         <activity android:name=".demos.onSensorchanged.OnSensorChanged" />
         <activity android:name=".demos.login.Login" />
-        <activity android:name=".demos.crossReference.CrossReference" />
+        <activity android:name=".demos.crossReference.Activity" />
         <activity android:name=".demos.downloadImageTask.DownloadImageTask" />
         <activity android:name=".demos.doubleTapheart.DoubleTapHeart" />
-        <activity android:name=".demos.adapterToggle.AdapterToggle" />
-        <activity android:name=".demos.coverImages.CoverImages" />
+        <activity android:name=".demos.adapterToggle.Activity" />
+        <activity android:name=".demos.coverImages.Activity" />
         <activity android:name=".demos.notification.NotificationSystem" />
 
         <service

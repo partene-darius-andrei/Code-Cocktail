@@ -2,9 +2,6 @@ package com.compilation;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -17,51 +14,46 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    //TODO separate classes
+    //TODO separate demos
 
-    List<ActivityInfo> activityInfos;
+    List<Model> demos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        activityInfos = getActivities();
+        demos = getDemos();
 
         initRecyclerView();
 
     }
 
-    private List<ActivityInfo> getActivities() {
+    private List<Model> getDemos() {
 
-        String a = this.getClass().toString();
-        String currentActivity = a.substring(a.indexOf(" ") + 1, a.length());
+        List<Model> demos = new ArrayList<>();
 
-        PackageManager pm = this.getPackageManager();
-        PackageInfo info = null;
         try {
-            info = pm.getPackageInfo(getPackageName(), PackageManager.GET_ACTIVITIES);
-        } catch (PackageManager.NameNotFoundException e) {
+            JSONObject jsonObject = new JSONObject(loadJSONFromAsset());
+            JSONArray demosJson = jsonObject.getJSONArray("demos");
+            for (int i = 0; i < demosJson.length(); i++){
+                demos.add(new Model(demosJson.getJSONObject(i)));
+            }
+        } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        assert info != null;
-        List<ActivityInfo> activityInfos = new LinkedList<>(Arrays.asList(info.activities));
-        for (ActivityInfo activityInfo: new ArrayList<>(activityInfos)){
-            String name = activityInfo.name;
-            if (name.equals(currentActivity)){
-                activityInfos.remove(activityInfo);
-                break;
-            }
-        }
-        return activityInfos;
+        return demos;
     }
 
     public void initRecyclerView(){
@@ -75,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         try {
-                            startActivity(new Intent(getApplicationContext(), Class.forName(activityInfos.get(position).name)));
+                            startActivity(new Intent(getApplicationContext(), Class.forName(demos.get(position).getClassName())));
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }
@@ -145,17 +137,30 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
 
-            String appInfo = activityInfos.get(position).toString();
-            String className = appInfo.substring(appInfo.lastIndexOf(".") + 1, appInfo.length() - 1);
-
-            holder.title.setText(className);
+            holder.title.setText(demos.get(position).getTitle());
         }
 
         @Override
         public int getItemCount() {
-            return activityInfos.size();
+            return demos.size();
         }
 
 
+    }
+
+    public String loadJSONFromAsset() {
+        String json;
+        try {
+            InputStream is = getAssets().open("demo_list");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
     }
 }

@@ -5,7 +5,7 @@
     android:id="@+id/activity_feed"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".demos.adapterToggle.AdapterToggle"
+    tools:context=".demos.adapterToggle.Activity"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar

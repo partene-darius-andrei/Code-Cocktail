@@ -1,0 +1,8 @@
+{
+  "demos":[
+    {"class": "crossReference", "title": "title1", "description": "description1"},
+    {"class": "adapterToggle", "title": "title2", "description": "description2"},
+    {"class": "coverImages", "title": "title3", "description": "description3"},
+    {"class": "crossReference", "title": "title4", "description": "description4"}
+  ]
+}

@@ -21,7 +21,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CrossReference extends AppCompatActivity {
+public class Activity extends AppCompatActivity {
 
     //TODO separate classes
 
@@ -41,7 +41,7 @@ public class CrossReference extends AppCompatActivity {
     public String loadJSONFromAsset() {
         String json;
         try {
-            InputStream is = getAssets().open("deeplink.json");
+            InputStream is = getAssets().open("deeplink");
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -73,7 +73,7 @@ public class CrossReference extends AppCompatActivity {
                 appIDs.add(jsonOBject.getString("appID"));
             }
             else {
-                Toast.makeText(this, "CrossReference ignored: " + currentPackage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Activity ignored: " + currentPackage, Toast.LENGTH_SHORT).show();
             }
 
         }

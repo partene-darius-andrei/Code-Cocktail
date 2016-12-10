@@ -10,7 +10,7 @@ import android.support.v7.widget.Toolbar;
 import com.compilation.R;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
-public class CoverImages extends AppCompatActivity {
+public class Activity extends AppCompatActivity {
 
     //TODO add more comments
 

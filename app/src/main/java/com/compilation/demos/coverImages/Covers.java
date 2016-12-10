@@ -7,7 +7,7 @@ import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-class Covers {
+public class Covers {
 
     //TODO replace with funnier images
 

@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import com.compilation.MyApplication;
 import com.compilation.R;
 
-public class AdapterToggle extends AppCompatActivity {
+public class Activity extends AppCompatActivity {
 
     //TODO add comments
 
