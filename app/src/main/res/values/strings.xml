@@ -8,4 +8,8 @@
         <item>Notification 5</item>
         <item>Notification 6</item>
     </array>
+
+    <!--Drawer-->
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
 </resources>

@@ -1,17 +1,29 @@
 package com.compilation.mainApp;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +37,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,8 +52,99 @@ public class MainActivity extends AppCompatActivity {
 
         demos = getDemos();
 
+        initViews();
         initRecyclerView();
 
+    }
+
+
+    public void initViews() {
+        initToolBar();
+        initDrawer();
+    }
+
+    public void initToolBar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(
+                this, mDrawerLayout, toolbar,
+                R.string.drawer_open, R.string.drawer_close
+        );
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        mDrawerToggle.syncState();
+
+    }
+
+    public void initDrawer() {
+
+        List<String> names = new ArrayList<>();
+        List<String> icons = new ArrayList<>();
+
+        names.add("Feedback");
+        names.add("Rate");
+        names.add("Share");
+
+        icons.add(Icons.sendFeedback);
+        icons.add(Icons.rate);
+        icons.add(Icons.share);
+
+
+        ListView mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        DrawerAdapter adapter = new DrawerAdapter(this, icons, names);
+
+        // Set the adapter for the list view
+        mDrawerList.setAdapter(adapter);
+        // Set the list's click listener
+        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent intent;
+                switch (position) {
+                    case 0:
+                        String version = null;
+                        try {
+                            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+                            version = pInfo.versionName;
+                        } catch (PackageManager.NameNotFoundException e) {
+                            e.printStackTrace();
+                        }
+
+                        intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "partene.darius@gmail.com", null));
+                        intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback " + getString(R.string.app_name) + " " + (version == null ? "" : version) + " android");
+                        String emailContent = createEmailContent();
+                        intent.putExtra(Intent.EXTRA_TEXT, emailContent);
+                        startActivity(Intent.createChooser(intent, "Feedback"));
+                        break;
+                    case 1:
+                        intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse("market://details?id=" + getApplicationContext().getApplicationInfo().packageName));
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("text/plain");
+                        intent.putExtra(Intent.EXTRA_SUBJECT, R.string.app_name);
+                        intent.putExtra(Intent.EXTRA_TEXT, "play.google.com/store/apps/details?id=" + getApplicationContext().getApplicationInfo().packageName);
+                        startActivity(Intent.createChooser(intent, "Share via"));
+                        break;
+                }
+            }
+        });
+    }
+
+    public String createEmailContent() {
+        String release = Build.VERSION.RELEASE;
+        int sdkVersion = Build.VERSION.SDK_INT;
+        String osVersion = "Android SDK: " + sdkVersion + " (" + release + ")\n";
+        String manufacturer = Build.MANUFACTURER;
+        String model = Build.MODEL;
+        String deviceModel = "Device Model: " + manufacturer + " " + model + "\n";
+        String displayLanguage = "Display language: " + Locale.getDefault().getLanguage() + "\n";
+        return osVersion + deviceModel + displayLanguage;
     }
 
     private List<Model> getDemos() {
@@ -50,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             JSONObject jsonObject = new JSONObject(loadJSONFromAsset());
             JSONArray demosJson = jsonObject.getJSONArray("demos");
-            for (int i = 0; i < demosJson.length(); i++){
+            for (int i = 0; i < demosJson.length(); i++) {
                 demos.add(new Model(demosJson.getJSONObject(i)));
             }
         } catch (JSONException e) {
@@ -59,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         return demos;
     }
 
-    public void initRecyclerView(){
+    public void initRecyclerView() {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         MainAdapter adapter = new MainAdapter();
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -68,7 +172,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
+                    @Override
+                    public void onItemClick(View view, int position) {
                         try {
                             Intent demo = new Intent(getApplicationContext(), Class.forName(demos.get(position).getClassName()));
                             demo.putExtra("demo", demos.get(position));
@@ -101,7 +206,8 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        @Override public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e) {
+        @Override
+        public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e) {
             View childView = view.findChildViewUnder(e.getX(), e.getY());
             if (childView != null && mListener != null && mGestureDetector.onTouchEvent(e)) {
                 mListener.onItemClick(childView, view.getChildAdapterPosition(childView));
@@ -110,10 +216,13 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
 
-        @Override public void onTouchEvent(RecyclerView view, MotionEvent motionEvent) { }
+        @Override
+        public void onTouchEvent(RecyclerView view, MotionEvent motionEvent) {
+        }
 
         @Override
-        public void onRequestDisallowInterceptTouchEvent (boolean disallowIntercept){}
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+        }
     }
 
     class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> {
@@ -167,5 +276,13 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
         return json;
+    }
+
+    static class Icons {
+
+        static String sendFeedback = "\uf0e0";
+        static String rate = "\ue800";
+        static String share = "\ue801";
+
     }
 }
