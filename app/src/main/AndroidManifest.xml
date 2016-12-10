@@ -33,7 +33,7 @@
 
         <receiver android:name=".demos.notification.Notification$MyReceiver" />
 
-        <activity android:name=".demos.horizontalViews.HorizontalViews" />
+        <activity android:name=".demos.horizontalViews.Activity" />
         <activity android:name=".mainApp.HolderActivity"></activity>
     </application>
 
