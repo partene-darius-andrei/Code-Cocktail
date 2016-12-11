@@ -29,7 +29,7 @@ class SeekbarAdapter extends BaseAdapter {
         this.models = models;
         this.context = context;
 
-        //initialize lists with empty elements so we can add
+        //initialize lists with empty elements so we can set later
         for (int i = 0; i < models.size(); i++){
             seekBars.add(null);
             values.add(null);
@@ -95,7 +95,7 @@ class SeekbarAdapter extends BaseAdapter {
                 //the difference from the beginning and end of change
                 int difference = progressChanged - initialProgress;
                 //update the other ones, except from this position
-                Activity.refresh(Math.abs(difference), difference > 0, position);
+                refresh(Math.abs(difference), difference > 0, position);
 
 
             }
@@ -103,15 +103,132 @@ class SeekbarAdapter extends BaseAdapter {
         return view;
     }
 
-    public List<SeekBar> getSeekBars() {
-        return seekBars;
+    //this function is called when a seekbar changes it's value
+    private void refresh(int difference, boolean positive, int position) {
+
+
+        //the new value to set for each seekbar
+        int newValue;
+
+        //get the old value from the seekbar
+        int oldValue;
+
+        //sum is used to check that the result is ok
+        int sum = 0;
+
+        //final desired result
+        double result = 100;
+
+        //iterate through each seekbar
+        for (int i = 0; i < seekBars.size(); i++) {
+            SeekBar seekBar = seekBars.get(i);
+
+            //get the seekbar value
+            oldValue = seekBar.getProgress();
+
+            //check to see if it's the current position which is chaning
+            if (i != position) {
+                //if it's negative or positive
+                if (positive) {
+                    //update new value
+                    newValue = (oldValue - (difference / (seekBars.size() - 1)));
+
+                    //check if it is outside or bounds
+                    if (newValue < 0) {
+                        newValue = 0;
+                    } else if (newValue > seekBar.getMax()) {
+                        newValue = seekBar.getMax();
+                    }
+
+                } else {
+                    newValue = (oldValue + difference / (seekBars.size() - 1));
+                }
+                //current position
+            } else {
+                //check if it is outside of bounds
+                if (result < oldValue) {
+                    //set it to max
+                    newValue = seekBar.getMax();
+                    //check if it is the same value or not
+                } else if (difference != oldValue) {
+                    //if it isnt, check if it is negative or positive
+                    if (positive) {
+                        //update value
+                        newValue = oldValue + difference;
+                    } else {
+                        newValue = oldValue - difference;
+                    }
+                    //same value
+                } else newValue = oldValue;
+            }
+            //update the list of values for adapter
+            values.set(i, newValue);
+        }
+
+        //test the outcome
+        for (int i = 0; i < values.size(); i++) {
+            sum += values.get(i);
+        }
+
+        //correct the difference
+        reCheck(sum, result);
+
+        //notify the adapter of changes
+        notifyDataSetChanged();
+
+        //update text with corrected values
+        sum = 0;
+        if (values != null) {
+            for (int i = 0; i < values.size(); i++) {
+                sum += values.get(i);
+            }
+        }
+        Activity.waiting.setVisibility(View.GONE);
+        Activity.result.setText(String.valueOf(sum));
+
+
     }
 
-    public void setValues(List<Integer> values) {
-        this.values = values;
+    private void reCheck(int sum, double totalPoints) {
+        int difference;
+        //see if difference is positive or negative
+        if (sum < totalPoints) {
+            difference = (int) totalPoints - sum;
+            loop:
+            for (int i = 0; i <= difference; i++) {
+                for (int j = 0; j < values.size(); j++) {
+                    //check if the new value isn't greater than our max
+                    if (values.get(j) + 1 <= seekBars.get(j).getMax()) {
+                        //update value
+                        values.set(j, values.get(j) + 1);
+                        //update remaining difference
+                        difference -= 1;
+                        if (difference == 0) {
+                            //exit if difference is 0
+                            break loop;
+                        }
+                    }
+                }
+            }
+        } else {
+            difference = (int) (sum - totalPoints);
+            loop:
+            for (int i = 0; i <= difference; i++) {
+                for (int j = 0; j < values.size(); j++) {
+                    //check to see if new value isn't smaller than 0
+                    if (values.get(j) - 1 >= 0) {
+                        //update value
+                        values.set(j, values.get(j) - 1);
+                        //update difference
+                        difference -= 1;
+                        if (difference == 0) {
+                            //exit if difference is 0
+                            break loop;
+                        }
+                    }
+                }
+            }
+        }
     }
 
-    public List<Integer> getValues() {
-        return values;
-    }
 }

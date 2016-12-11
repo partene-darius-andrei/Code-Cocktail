@@ -17,10 +17,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/ad_container"
+        android:background="@drawable/card"
         android:dividerHeight="5dp"
         android:divider="@android:color/transparent"
-        android:layout_below="@+id/toolbar" />
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/textView11" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -30,13 +31,40 @@
         android:layout_centerInParent="true" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:text="This is an activity which contains a list of seekbars. If you change any of the seekbar's value, the other ones adjust so that the final sum remains the same"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/result"
-        android:text="Result"
-        android:textSize="36sp"
+        android:id="@+id/textView11"
         android:layout_above="@+id/ad_container"
+        android:background="@drawable/card_blue"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/result"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/result"
+        android:textSize="36sp"
+        android:textStyle="normal|italic"
+        android:background="@drawable/circle"
+        android:gravity="center"
+        android:padding="16dp"
+        android:textColor="@color/blue"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/listViewSlider"
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/result"
+        android:layout_alignStart="@+id/result"
+        android:id="@+id/waiting"
+        android:layout_alignEnd="@+id/result"
+        android:layout_alignTop="@+id/result" />
 
 </RelativeLayout>
