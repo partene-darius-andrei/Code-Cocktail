@@ -1,5 +1,7 @@
 package com.compilation.mainApp;
 
+import com.google.gson.internal.LinkedTreeMap;
+
 import java.util.ArrayList;
 
 /**
@@ -7,21 +9,37 @@ import java.util.ArrayList;
  */
 public class DummyData {
 
-
-    private static ArrayList<Model> list = new ArrayList<>();
-
     DummyData() {
-
-        list.add(new Model("Model 1", true));
-        list.add(new Model("Model 2", true));
-        list.add(new Model("Model 3", false));
-        list.add(new Model("Model 4", false));
-        list.add(new Model("Model 5", false));
-        list.add(new Model("Model 6", false));
-
     }
 
     public ArrayList<Model> getList() {
+
+        ArrayList<Model> list = new ArrayList<>();
+
+        for (int i = 0; i < 6; i ++){
+            if (i < 3){
+                list.add(new Model("Model " + i, true));
+            }
+            else {
+                list.add(new Model("Model " + i, false));
+            }
+        }
+
         return list;
+    }
+
+    public LinkedTreeMap<Integer, ArrayList<Model>> getMap(){
+
+        LinkedTreeMap<Integer, ArrayList<Model>> map = new LinkedTreeMap<>();
+
+        for (int i = 0; i < 3; i++){
+            ArrayList<Model> models = new ArrayList<>();
+            for (int j = 0; j < 3; j++){
+                models.add(new Model("Model " + j));
+            }
+            map.put(i, models);
+        }
+
+        return map;
     }
 }

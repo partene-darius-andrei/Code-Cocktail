@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(View view, int position) {
                         try {
-                            Intent demo = new Intent(getApplicationContext(), Class.forName(demos.get(position).getClassName()));
+                            Intent demo = new Intent(getApplicationContext(), Class.forName(demos.get(position).getPackageName()));
                             demo.putExtra("demo", demos.get(position));
                             startActivity(demo);
                         } catch (ClassNotFoundException e) {

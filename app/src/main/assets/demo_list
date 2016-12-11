@@ -1,28 +1,40 @@
 {
   "demos":[
-    {"class": "coverImages",
+    {
+      "packageName": "coverImages",
       "title": "Cover images",
       "description": "Load a set of images from the res folder and repeats them depending on the size of our list"},
-    {"class": "adapterSort",
+    {
+      "packageName": "adapterSort",
       "title": "Adapter sort",
       "description": "Adapter which can sort objects based on a property"},
-    {"class": "crossReference",
+    {
+      "packageName": "crossReference",
       "title": "App cross reference",
       "description": "A set of 4 apps which creates links to each other based on a json config"},
-    {"class": "doubleTapAnimation",
+    {
+      "packageName": "doubleTapAnimation",
       "title": "Animation on doubleTap",
       "description": "Load an image and apply an animation to it from the location of the doubleTap"},
-    {"class": "downloadImageTask",
+    {
+      "packageName": "downloadImageTask",
       "title": "Download and save image",
       "description": "Load an image using asynchronously and save it"},
-    {"class": "horizontalViews",
+    {
+      "packageName": "horizontalViews",
       "title": "Horizontal listView",
       "description": "Adding views to create the illusion of horizontal listView"},
-    {"class": "login",
+    {
+      "packageName": "login",
       "title": "Login",
       "description": "Just a simple login page using material design"},
-    {"class": "notification",
+    {
+      "packageName": "notification",
       "title": "Scheduled notification",
-      "description": "Demonstration of a repeating scheduled notification with a message from resources"}
+      "description": "Demonstration of a repeating scheduled notification with a message from resources"},
+    {
+      "packageName": "dualViewPager",
+      "title": "Double or nothing",
+      "description": "Implementation of a 2D viewPager system"}
   ]
 }

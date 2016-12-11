@@ -23,6 +23,7 @@ public class HolderActivity extends AppCompatActivity {
     public void setContentView(int id){
 
         super.setContentView(id);
+
         Model demo = getIntent().getParcelableExtra("demo");
 
         //toolbar
@@ -35,7 +36,6 @@ public class HolderActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
         loadAds();
     }
 

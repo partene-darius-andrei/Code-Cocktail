@@ -6,21 +6,22 @@ import android.os.Parcelable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Model implements Parcelable{
+import java.util.ArrayList;
 
-    //TODO maybe make it global, available for all demos
+public class Model implements Parcelable{
 
     private String title;
     private String description;
-    private String className;
+    private String packageName;
     private boolean filtered;
+    private ArrayList<Model> models;
 
 
 
     public Model(JSONObject jsonObject) throws JSONException {
         title = jsonObject.getString("title");
         description = jsonObject.getString("description");
-        className = "com.compilation.demos." + jsonObject.getString("class") + ".Activity";
+        packageName = "com.compilation.demos." + jsonObject.getString("packageName") + ".Activity";
     }
 
     public Model(String title, boolean filtered) {
@@ -28,12 +29,16 @@ public class Model implements Parcelable{
         this.filtered = filtered;
     }
 
+    public Model(String title){
+        this.title = title;
+    }
+
 
     private Model(Parcel in) {
         title = in.readString();
         filtered = in.readByte() != 0;
         description = in.readString();
-        className = in.readString();
+        packageName = in.readString();
     }
 
     public static final Creator<Model> CREATOR = new Creator<Model>() {
@@ -58,7 +63,7 @@ public class Model implements Parcelable{
         parcel.writeString(title);
         parcel.writeByte((byte) (filtered ? 1 : 0));
         parcel.writeString(description);
-        parcel.writeString(className);
+        parcel.writeString(packageName);
     }
 
     public String getTitle() {
@@ -85,11 +90,19 @@ public class Model implements Parcelable{
         this.description = description;
     }
 
-    public String getClassName() {
-        return className;
+    public String getPackageName() {
+        return packageName;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
+    }
+
+    public void setModels(ArrayList<Model> models) {
+        this.models = models;
+    }
+
+    public ArrayList<Model> getModels() {
+        return models;
     }
 }
