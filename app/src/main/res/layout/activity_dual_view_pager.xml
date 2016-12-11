@@ -16,8 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/view_pager"
-        android:layout_below="@+id/toolbar"
-        android:layout_above="@+id/ad_container"/>
+        android:layout_above="@+id/ad_container"
+        android:layout_below="@+id/textView9" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -27,5 +27,16 @@
         android:layout_centerInParent="true"
         >
     </RelativeLayout>
+
+    <TextView
+        android:text="A custom implementation of a 2D viewpager system. The main focus is on the find() function because that is the one which can search in every fragment to find the fragment which is visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView9"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:layout_margin="16dp" />
 
 </RelativeLayout>

@@ -34,7 +34,7 @@ public class DummyData {
 
         for (int i = 0; i < 3; i++){
             ArrayList<Model> models = new ArrayList<>();
-            for (int j = 0; j < 3; j++){
+            for (int j = 0; j < 4; j++){
                 models.add(new Model("Model " + j));
             }
             map.put(i, models);

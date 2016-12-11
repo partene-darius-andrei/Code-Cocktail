@@ -10,15 +10,18 @@ import com.compilation.R;
 import com.compilation.mainApp.Model;
 
 /**
- *
+ * This is the fragment which is visible to the user and contains the passed model and ui elements
  */
 
 public class MainFragment extends Fragment {
 
-    //adapterPosition is used to determine if video can be played or not in find()
-    //if adapterPosition matches the current position in the initViewPager, we play the video
-    private int adapterPosition;
+    //position is used to check if it matches with the viewpager index
+    private int position;
+
+    //our main object with data
     private Model model;
+
+    //simple textView for demo
     private TextView textView;
 
     public static Fragment newInstance() {
@@ -27,10 +30,15 @@ public class MainFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_video, container, false);
-        model = getArguments().getParcelable("model");
-        adapterPosition = getArguments().getInt("position");
+        View rootView = inflater.inflate(R.layout.main_fragment, container, false);
         textView = (TextView) rootView.findViewById(R.id.textView);
+
+        //get the data
+        model = getArguments().getParcelable("model");
+
+        //get the position
+        position = getArguments().getInt("position");
+
         return rootView;
     }
 
@@ -38,8 +46,8 @@ public class MainFragment extends Fragment {
         return textView;
     }
 
-    public int getAdapterPosition() {
-        return adapterPosition;
+    public int getPosition() {
+        return position;
     }
 
     public Model getModel() {

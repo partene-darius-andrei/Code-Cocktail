@@ -40,6 +40,7 @@ public class MyApplication extends Application{
         return context;
     }
 
+    //dummyData used through the demos
     public static DummyData getDummyData() {
         return dummyData;
     }
