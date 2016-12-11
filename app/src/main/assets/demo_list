@@ -35,6 +35,10 @@
     {
       "packageName": "dualViewPager",
       "title": "Double or nothing",
-      "description": "Implementation of a 2D viewPager system"}
+      "description": "Implementation of a 2D viewPager system"},
+    {
+      "packageName": "averageSeekbars",
+      "title": "Seekbar average",
+      "description": "Update a list of seekbars, always maintaining the same sum specified"}
   ]
 }

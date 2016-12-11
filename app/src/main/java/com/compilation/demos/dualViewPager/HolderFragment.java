@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.compilation.R;
 import com.compilation.mainApp.Model;
 import java.util.ArrayList;
@@ -90,9 +89,11 @@ public class HolderFragment extends Fragment {
         //check if it matches with our current viewpagers index
         if (horizontalPosition == horizontal.getCurrentItem() && verticalPosition == vertical.getCurrentItem()) {
 
-            //do something
+            //here we have access to the textview in each main fragment
             textView.setText(model.getTitle() + "\nVertical: " + verticalPosition + "\nHorizontal: " + horizontalPosition);
-            Toast.makeText(getActivity(), verticalPosition + " " + horizontalPosition, Toast.LENGTH_SHORT).show();
+
+            //and the textview from the activity
+            Activity.current.setText("Current position: " + verticalPosition + " " + horizontalPosition);
 
             //for demo only
             if (verticalPosition == 0){

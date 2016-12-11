@@ -1,5 +1,6 @@
 package com.compilation.mainApp;
 
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -15,10 +16,8 @@ public class HolderActivity extends AppCompatActivity {
 
     /**
      * Activity used for each demo activity.
-     * It gets the demo, sets the toolbar and loads ads
+     * It gets the demo, sets the toolbar, loads ads and sets portrait
      */
-
-
 
     public void setContentView(int id){
 
@@ -36,7 +35,12 @@ public class HolderActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+        //ads
         loadAds();
+
+        //portrait mode
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     @Override

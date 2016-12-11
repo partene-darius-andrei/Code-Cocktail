@@ -15,6 +15,7 @@ public class Model implements Parcelable{
     private String packageName;
     private boolean filtered;
     private ArrayList<Model> models;
+    private double value;
 
 
 
@@ -24,9 +25,10 @@ public class Model implements Parcelable{
         packageName = "com.compilation.demos." + jsonObject.getString("packageName") + ".Activity";
     }
 
-    public Model(String title, boolean filtered) {
+    public Model(String title, boolean filtered, double value) {
         this.title = title;
         this.filtered = filtered;
+        this.value = value;
     }
 
     public Model(String title){
@@ -39,6 +41,7 @@ public class Model implements Parcelable{
         filtered = in.readByte() != 0;
         description = in.readString();
         packageName = in.readString();
+        value = in.readDouble();
     }
 
     public static final Creator<Model> CREATOR = new Creator<Model>() {
@@ -64,6 +67,7 @@ public class Model implements Parcelable{
         parcel.writeByte((byte) (filtered ? 1 : 0));
         parcel.writeString(description);
         parcel.writeString(packageName);
+        parcel.writeDouble(value);
     }
 
     public String getTitle() {
@@ -104,5 +108,13 @@ public class Model implements Parcelable{
 
     public ArrayList<Model> getModels() {
         return models;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
     }
 }

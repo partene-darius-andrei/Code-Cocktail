@@ -47,7 +47,8 @@
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
-        <activity android:name=".demos.dualViewPager.Activity"></activity>
+        <activity android:name=".demos.dualViewPager.Activity" />
+        <activity android:name=".demos.averageSeekbars.Activity"></activity>
     </application>
 
 </manifest>

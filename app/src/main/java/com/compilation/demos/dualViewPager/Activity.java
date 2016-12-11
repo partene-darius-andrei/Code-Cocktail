@@ -3,6 +3,9 @@ package com.compilation.demos.dualViewPager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.TextureView;
+import android.widget.TextView;
+
 import com.compilation.R;
 import com.compilation.mainApp.HolderActivity;
 import com.compilation.mainApp.MyApplication;
@@ -23,6 +26,7 @@ public class Activity extends HolderActivity {
      */
 
     static VerticalViewPager viewPager;
+    static TextView current;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,7 @@ public class Activity extends HolderActivity {
 
         Adapter adapter = new Adapter(getSupportFragmentManager(), MyApplication.getDummyData().getMap());
         viewPager = (VerticalViewPager) findViewById(R.id.view_pager);
+        current = (TextView) findViewById(R.id.current);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override

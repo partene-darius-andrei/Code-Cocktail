@@ -107,7 +107,7 @@ public class Activity extends HolderActivity {
                 else {
                     TextView ignored = (TextView) findViewById(R.id.textView);
                     ignored.setText("This demos illustrates how we can have multiple apps (in this case 4) and create references to each other\n" +
-                            "We load the config from a json which contains a packagename (the icon has the same name for simplicity");
+                            "We load the config from a json which contains a packagename (the icon has the same name for simplicity)");
                 }
             }
 

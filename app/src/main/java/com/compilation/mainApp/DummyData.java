@@ -17,11 +17,11 @@ public class DummyData {
         ArrayList<Model> list = new ArrayList<>();
 
         for (int i = 0; i < 6; i ++){
-            if (i < 3){
-                list.add(new Model("Model " + i, true));
+            if (i < 2){
+                list.add(new Model("Model " + i, true, 30));
             }
             else {
-                list.add(new Model("Model " + i, false));
+                list.add(new Model("Model " + i, false, 30));
             }
         }
 

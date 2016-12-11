@@ -11,16 +11,6 @@ public class MyApplication extends Application{
 
     static DummyData dummyData;
 
-    //TODO add description in each demo like
-
-    /**
-     *  this
-     */
-
-    //TODO add comments EVERYWHERE
-
-            //TODO cleaning
-
     static Context context;
 
     @Override

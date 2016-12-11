@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:id="@+id/view_pager"
         android:layout_above="@+id/ad_container"
-        android:layout_below="@+id/textView9" />
+        android:layout_below="@+id/current" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -38,5 +38,16 @@
         android:textAlignment="center"
         android:textSize="18sp"
         android:layout_margin="16dp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView9"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/current"
+        android:textSize="18sp"
+        android:layout_margin="16dp"
+        android:textStyle="normal|bold|italic" />
 
 </RelativeLayout>
