@@ -4,3 +4,7 @@ This app representes some of my own implementations with various elements: senso
 The MainActivity contains a recyclerView with all the demo activities.
 
 Each demo activity contains separate implementations which could be useful to someone starting new, or looking for a solution to a problem.
+
+The app is live on Play Store to check it out faster
+
+https://play.google.com/store/apps/details?id=com.code.cocktail
