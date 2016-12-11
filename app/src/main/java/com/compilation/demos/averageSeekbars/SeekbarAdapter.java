@@ -14,19 +14,26 @@ import com.compilation.mainApp.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Darius on 9/24/2016.
- */
-public class SeekbarAdapter extends BaseAdapter {
+class SeekbarAdapter extends BaseAdapter {
+
+    /**
+     * The adapter which holds the seekbars and values and calls refresh() from our activity
+     */
     private List<Model> models = new ArrayList<>();
     private Context context;
     private List<SeekBar> seekBars = new ArrayList<>();
-    private List<Integer> values;
+    private List<Integer> values = new ArrayList<>();
 
 
-    public SeekbarAdapter(Context context, List<Model> models) {
+    SeekbarAdapter(Context context, List<Model> models) {
         this.models = models;
         this.context = context;
+
+        //initialize lists with empty elements so we can add
+        for (int i = 0; i < models.size(); i++){
+            seekBars.add(null);
+            values.add(null);
+        }
     }
 
     @Override
@@ -50,25 +57,24 @@ public class SeekbarAdapter extends BaseAdapter {
         view = inflater.inflate(R.layout.seekbar_list_item, null);
         final Model model = models.get(position);
         SeekBar seekBar = (SeekBar) view.findViewById(R.id.seekBar);
+        TextView valueTextView = (TextView) view.findViewById(R.id.value);
 
         double value = model.getValue();
-        if (seekBars.size() < models.size()){
-            seekBars.add(seekBar);
-        }
 
-        TextView valueTextView = (TextView) view.findViewById(R.id.value);
-        seekBar.setMax((int)value);
-        if (values == null){
+        //if there isn't a seekbar, this is the first time the view is created. set everything to middle and update values
+        if (seekBars.get(position) == null) {
+            seekBars.set(position, seekBar);
+            values.set(position, (int) value / 2);
             seekBar.setProgress((int) (value / 2));
             valueTextView.setText(String.valueOf((int) (value / 2)));
         }
         else {
+            //we have values, update seekbar
             valueTextView.setText(String.valueOf(values.get(position)));
             seekBar.setProgress(values.get(position));
         }
 
-
-
+        seekBar.setMax((int) value);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progressChanged = 0;
@@ -86,8 +92,11 @@ public class SeekbarAdapter extends BaseAdapter {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                //the difference from the beginning and end of change
                 int difference = progressChanged - initialProgress;
-                    Activity.refresh(Math.abs(difference), difference > 0, position);
+                //update the other ones, except from this position
+                Activity.refresh(Math.abs(difference), difference > 0, position);
+
 
             }
         });
@@ -100,5 +109,9 @@ public class SeekbarAdapter extends BaseAdapter {
 
     public void setValues(List<Integer> values) {
         this.values = values;
+    }
+
+    public List<Integer> getValues() {
+        return values;
     }
 }
