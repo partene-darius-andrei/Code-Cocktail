@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.compilation.R;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
@@ -54,7 +55,7 @@ public class HolderActivity extends AppCompatActivity {
     }
 
     public void loadAds(){
-        AdView mAdView = new AdView(this);
+        final AdView mAdView = new AdView(this);
         mAdView.setAdSize(AdSize.SMART_BANNER);
         mAdView.setAdUnitId(getString(R.string.banner_ad_unit_id));
 
@@ -64,11 +65,17 @@ public class HolderActivity extends AppCompatActivity {
         // Optionally populate the ad request builder.
         adRequestBuilder.addTestDevice(AdRequest.DEVICE_ID_EMULATOR);
 
-        // Add the AdView to the view hierarchy.
-        RelativeLayout layout = (RelativeLayout) findViewById(R.id.ad_container);
-        layout.addView(mAdView);
-
         // Start loading the ad.
         mAdView.loadAd(adRequestBuilder.build());
+
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                // Add the AdView to the view hierarchy.
+                RelativeLayout layout = (RelativeLayout) findViewById(R.id.ad_container);
+                layout.addView(mAdView);
+            }
+        });
     }
 }
